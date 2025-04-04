@@ -1,13 +1,8 @@
-# Input string
-s = "6777133339"
-
-# List of all same 3-digit numbers (111, 222, ..., 999)
-same_3_digit_numbers = [str(x) * 3 for x in range(1, 10)]
-
-# Check for presence of each number in the string
-found_numbers = [int(num) for num in same_3_digit_numbers if num in s]
-
-# Find the largest same 3-digit number
-largest_number = max(found_numbers) if found_numbers else None
-
-print("Largest same 3-digit number:", largest_number)
+class Solution:
+    def largestGoodInteger(self, num: str) -> str:
+        # List of all same 3-digit numbers (000, 111, ..., 999)
+        candidates = [num[i:i+3] for i in range(len(num) - 2) if num[i] == num[i+1] == num[i+2]]
+        
+        # Return the largest 3-digit number found, or an empty string if none
+        return max(candidates) if candidates else ""
+        
